@@ -8,6 +8,8 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.observe
+import androidx.navigation.fragment.findNavController
 
 abstract class BaseFragment<DB : ViewDataBinding>(@LayoutRes private val layoutId: Int) :
     Fragment() {
@@ -24,9 +26,21 @@ abstract class BaseFragment<DB : ViewDataBinding>(@LayoutRes private val layoutI
         savedInstanceState: Bundle?
     ): View? {
         _binding = DataBindingUtil.inflate(inflater, layoutId, container, false)
+        binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        initializeNavigationCommandObserver()
+    }
+
+    private fun initializeNavigationCommandObserver() {
+        viewModel?.navCommand?.observe(viewLifecycleOwner) {
+            findNavController().navigate(it)
+        }
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
