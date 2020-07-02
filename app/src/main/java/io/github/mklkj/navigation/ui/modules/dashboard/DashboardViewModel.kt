@@ -1,13 +1,14 @@
-package io.github.mklkj.navigation.ui.dashboard
+package io.github.mklkj.navigation.ui.modules.dashboard
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import io.github.mklkj.navigation.ui.base.BaseViewModel
 
-class DashboardViewModel : ViewModel() {
+class DashboardViewModel : BaseViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is dashboard Fragment"
     }
+
     val text: LiveData<String> = _text
 }

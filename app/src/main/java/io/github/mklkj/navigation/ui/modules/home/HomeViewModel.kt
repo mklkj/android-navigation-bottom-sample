@@ -1,10 +1,10 @@
-package io.github.mklkj.navigation.ui.home
+package io.github.mklkj.navigation.ui.modules.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import io.github.mklkj.navigation.ui.base.BaseViewModel
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel : BaseViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is home Fragment"

@@ -1,10 +1,10 @@
-package io.github.mklkj.navigation.ui.notifications
+package io.github.mklkj.navigation.ui.modules.notifications
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import io.github.mklkj.navigation.ui.base.BaseViewModel
 
-class NotificationsViewModel : ViewModel() {
+class NotificationsViewModel : BaseViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is notifications Fragment"
